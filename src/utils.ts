@@ -35,6 +35,7 @@ async function initBrowser() {
         console.log('Launching headless browser...');
         browser = await puppeteer.launch({
             headless: true, // or "new" if you want Puppeteer 19+ "headless" mode
+            args: ['--no-sandbox', '--disable-setuid-sandbox'],
         });
         console.log('Browser launched.');
     }
