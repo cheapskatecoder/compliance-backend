@@ -12,5 +12,5 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+  console.log(`Server is running on http://localhost:${PORT}, process.env.OPEN_AI_KEY: ${process.env.OPEN_AI_KEY}`);
 });

@@ -1,5 +1,5 @@
 import { Router, Request, Response } from 'express';
-import { closeBrowser, getRenderedText } from './utils';
+import { checkCompliance, closeBrowser, generatePrompt, getRenderedText } from './utils';
 
 const router = Router();
 const urlRegex = /^(https?:\/\/(?:www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b(?:[-a-zA-Z0-9()@:%_\+.~#?&//=]*))$/;
@@ -14,12 +14,9 @@ router.post('/check-compliance', async (req: Request, res: Response) => {
 
     try {
         const renderedText = await getRenderedText(url);
-        if (renderedText.length > 100) {
-            console.log(renderedText);
-        }
-        res.status(200).json({
-            text: renderedText
-        });
+        const compliance = await checkCompliance(generatePrompt(renderedText));
+
+        res.status(200).json(compliance);
     } catch (e) {
         console.error(e);
         res.status(500).json({ error: 'Error rendering the page' });
