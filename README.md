@@ -8,6 +8,9 @@ This project provides a Node.js/TypeScript API that:
 
 Technologies: Node.js, TypeScript, Express, Puppeteer, and OpenAI.
 
+
+**Please see disclaimer below.**
+
 ---
 
 ## Features
@@ -148,9 +151,12 @@ npm run lint
 
 ---
 
-## Potential Improvements
+# DISCLAIMER: Potential Improvements
+The project is built with a minimal typescript setup. I have highlighted some of the potential improvements below:
+- Add ESlint and prettier config.
+- Add proper logging.
+- Add authentication.
 - Add rate limiting to prevent abuse.
-- Enhance testing coverage with mocks for Puppeteer and OpenAI.
 - Optimize Puppeteer for heavy workloads (e.g., use a pool of page instances).
 - Implement caching for compliance results to reduce redundant API calls.
 
